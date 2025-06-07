@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Grand Line</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    .op-logo-container {
+      background-color: #ffc107;
+      width: 70px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+    .op-btn-gold {
+      background-color: #ffc107;
+      border: none;
+      color: #000;
+    }
+    .op-btn-gold:hover {
+      background-color: #e0a800;
+    }
+     header.banner {
+    height: 220px;
+    overflow: hidden;
+  }
+
+  @media (max-width: 576px) {
+    header.banner {
+      height: 150px;
+    }
+  }
+  </style>
+</head>
+
+ <header class="w-screen h-48 overflow-hidden">
+      <img src="/images/header_onePiece.jpg" alt="Chapéus de Palha" class="w-full h-full object-cover">
+
+    </header>
+
+<body class="bg-gray-100 flex flex-col items-center">
+
+<section id="login" class="py-5 bg-light min-vh-100 d-flex align-items-center">
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">
+          <div class="card shadow-lg border-0">
+            <div class="card-body p-5">
+              <div class="text-center mb-4">
+                <div class="op-logo-container mx-auto mb-3">
+                  <i class="bi bi-compass fs-1 text-white"></i>
+                </div>
+                <h2 class="card-title fw-bold">Entre na Aventura</h2>
+                <p class="text-muted">Junte-se aos Piratas do Chapéu de Palha</p>
+              </div>
+
+              <form action="index.html">
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email do Pirata</label>
+                  <input type="email" class="form-control form-control-lg" id="email" placeholder="luffy@onepieceworld.com" required>
+                </div>
+
+                <div class="mb-4">
+                  <label for="password" class="form-label">Senha Secreta</label>
+                  <input type="password" class="form-control form-control-lg" id="password" placeholder="••••••••" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-lg w-100 op-btn-gold">
+                  Zarpar para a Grand Line!
+                </button>
+              </form>
+
+              <div class="text-center mt-3">
+                <small class="text-muted">
+                  Novo na tripulação? 
+                  <a href="#" class="text-decoration-none">Registre-se aqui</a>
+                </small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>One Piece World - A Maior Aventura Pirata</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <style>
+    :root {
+      --op-ocean-blue: #1e40af;
+      --op-deep-blue: #1e3a8a;
+      --op-sky-blue: #3b82f6;
+      --op-gold: #f59e0b;
+      --op-red: #dc2626;
+      --op-cream: #fef3c7;
+    }
+
+    .op-ocean-gradient {
+      background: linear-gradient(
+        135deg,
+        var(--op-ocean-blue) 0%,
+        var(--op-sky-blue) 50%,
+        #60a5fa 100%
+      );
+    }
+
+    .op-text-shadow {
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .op-logo-container {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--op-gold) 0%, #fbbf24 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: wave 3s ease-in-out infinite;
+    }
+
+    @keyframes wave {
+      0%,
+      100% {
+        transform: rotate(0deg);
+      }
+      25% {
+        transform: rotate(5deg);
+      }
+      75% {
+        transform: rotate(-5deg);
+      }
+    }
+
+    .op-btn-gold {
+      background: linear-gradient(135deg, var(--op-gold) 0%, #fbbf24 100%);
+      border: none;
+      color: white;
+      font-weight: 600;
+    }
+
+    .op-btn-gold:hover {
+      background: linear-gradient(135deg, #d97706 0%, var(--op-gold) 100%);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+    }
+
+    .hero-section {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")
+        repeat;
+      opacity: 0.1;
+    }
+
+    .op-gold-line {
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(135deg, var(--op-gold) 0%, #fbbf24 100%);
+      border: none;
+      border-radius: 2px;
+    }
+
+    .op-icon-circle {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+
+    .op-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+    }
+
+    .navbar-brand {
+      font-size: 1.5rem;
+    }
+
+    .nav-link {
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--op-gold) !important;
+    }
+
+    .offcanvas {
+      border: none;
+    }
+
+    .modal-content {
+      border-radius: 15px;
+      border: none;
+    }
+
+    .accordion-button:not(.collapsed) {
+      background-color: var(--op-cream);
+      color: var(--op-deep-blue);
+    }
+
+    .list-group-item {
+      border: none;
+      background-color: #f8f9fa;
+      border-radius: 10px !important;
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .display-1 {
+        font-size: 3rem;
+      }
+
+      .hero-section {
+        min-height: 100vh;
+        padding: 2rem 0;
+      }
+
+      .op-avatar {
+        width: 50px;
+        height: 50px;
+        font-size: 1rem;
+      }
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--op-ocean-blue);
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--op-deep-blue);
+    }
+  </style>
+  <body>
+    <nav
+      class="navbar navbar-expand-lg navbar-dark fixed-top op-ocean-gradient"
+    >
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="#home">
+          <i class="bi bi-compass me-2"></i>
+          One Piece World
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasNavbar"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <img src="assets/images/" alt="" />
+        <div
+          class="offcanvas offcanvas-end op-ocean-gradient"
+          tabindex="-1"
+          id="offcanvasNavbar"
+        >
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title text-white">One Piece</h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="offcanvas"
+            ></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="/Home.html">Início</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/login.html">Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#synopsis">Sinopse</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#characters">Personagens</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#cast">Elenco</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#curiosities">Curiosidades</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#soundtrack">Trilha Sonora</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <section id="synopsis" class="py-5 mt-5">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center mb-5">
+            <span class="badge bg-warning text-dark p-2 mb-3">A História</span>
+            <h2 class="display-4 fw-bold mb-4">Sinopse da Aventura</h2>
+            <hr class="op-gold-line mx-auto" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <div class="card shadow border-0 mb-4">
+              <div class="card-body p-4">
+                <p class="lead">
+                  Monkey D. Luffy sempre sonhou em se tornar um pirata. Aos 17
+                  anos, após comer acidentalmente uma fruta mística chamada
+                  <strong>Gomu Gomu no Mi</strong>, seu corpo ganha propriedades
+                  de borracha, mas ele perde a capacidade de nadar para sempre.
+                </p>
+                <p>
+                  Inspirado por seu herói de infância, o poderoso pirata
+                  <strong>Shanks, o Ruivo</strong>, Luffy embarca em uma jornada
+                  épica pela Grand Line em busca do lendário tesouro conhecido
+                  como <strong>"One Piece"</strong> para se tornar o próximo Rei
+                  dos Piratas.
+                </p>
+                <p>
+                  Durante sua aventura, Luffy monta sua própria tripulação
+                  pirata, os <strong>Piratas do Chapéu de Palha</strong>, cada
+                  membro com seu próprio sonho e habilidades únicas.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-3 mb-3">
+  <div class="card h-100 text-center border-0 shadow-sm">
+    <div class="card-body">
+      <!-- Imagem circular no lugar do ícone -->
+      <div class="op-icon-circle bg-primary mb-3 mx-auto rounded-circle overflow-hidden" style="width: 80px; height: 80px;">
+        <img src="/images/Grand_Line.webp" alt="Grand Line" class="w-100 h-100 object-fit-cover">
+      </div>
+      <h5>Grand Line</h5>
+      <p class="card-text">
+        O oceano mais perigoso e misterioso do mundo
+      </p>
+    </div>
+  </div>
+</div>
+
+          <div class="col-md-3 mb-3">
+            <div class="card h-100 text-center border-0 shadow-sm">
+              <div class="card-body">
+                <div class="op-icon-circle bg-warning mb-3 mx-auto">
+                  <i class="bi bi-gem text-white"></i>
+                </div>
+                <h5>One Piece</h5>
+                <p class="card-text">
+                  O maior tesouro deixado pelo Rei dos Piratas
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <div class="card h-100 text-center border-0 shadow-sm">
+              <div class="card-body">
+                <!-- Imagem circular -->
+                <div
+                  class="op-icon-circle bg-success mb-3 mx-auto rounded-circle overflow-hidden"
+                  style="width: 80px; height: 80px"
+                >
+                  <img
+                    src="/images/Jolly_Roger.jpg"
+                    alt="Chapéus de Palha"
+                    class="w-100 h-100 object-fit-cover"
+                  />
+                </div>
+                <h5>Chapéu de Palha</h5>
+                <p class="card-text">
+                  Uma tripulação única com sonhos extraordinários
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3 mb-3">
+            <div class="card h-100 text-center border-0 shadow-sm">
+              <div class="card-body">
+                <div
+                  class="op-icon-circle bg-danger mb-3 mx-auto rounded-circle overflow-hidden"
+                  style="width: 80px; height: 80px"
+                >
+                  <img
+                    src="/images/AkumaNoMi.webp"
+                    alt="Akuma no Mi"
+                    class="w-100 h-100 object-fit-cover"
+                  />
+                </div>
+                <h5>Akuma no Mi</h5>
+                <p class="card-text">
+                  Frutas místicas que concedem poderes incríveis
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="characters" class="py-5 bg-light">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span class="badge bg-warning text-dark p-2 mb-3">Os Heróis</span>
+          <h2 class="display-4 fw-bold">Personagens Principais</h2>
+        </div>
+
+        <ul class="nav nav-tabs justify-content-center mb-4" id="charactersTab">
+          <li class="nav-item">
+            <button
+              class="nav-link active"
+              id="crew-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#crew"
+            >
+              Tripulação
+            </button>
+          </li>
+          <li class="nav-item">
+            <button
+              class="nav-link"
+              id="antagonists-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#antagonists"
+            >
+              Antagonistas
+            </button>
+          </li>
+        </ul>
+
+        <div class="tab-content" id="charactersTabContent">
+          <div class="tab-pane fade show active" id="crew">
+            <div class="row">
+              <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card h-100 border-0 shadow">
+                  <div class="card-body text-center">
+                    <!-- Avatar com imagem -->
+                    <div
+                      class="op-avatar bg-primary mx-auto mb-3 rounded-circle overflow-hidden"
+                      style="width: 80px; height: 80px"
+                    >
+                      <img
+                        src="/images/Luffy.webp"
+                        alt="Luffy"
+                        class="w-100 h-100 object-fit-cover"
+                      />
+                    </div>
+
+                    <h5 class="card-title">Monkey D. Luffy</h5>
+                    <span class="badge bg-primary mb-2">Capitão</span>
+                    <p class="card-text small">
+                      <strong>Poder:</strong> Gomu Gomu no Mi<br />
+                      <strong>Sonho:</strong> Ser o Rei dos Piratas<br />
+                      <strong>Recompensa:</strong> 3.000.000.000 berries
+                    </p>
+                    <button
+                      class="btn btn-outline-primary"
+                      data-bs-toggle="modal"
+                      data-bs-target="#luffyModal"
+                    >
+                      Ver Detalhes
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card h-100 border-0 shadow">
+                  <div class="card-body text-center">
+                    <div
+                      class="op-avatar bg-success mx-auto mb-3 rounded-circle overflow-hidden"
+                      style="width: 80px; height: 80px"
+                    >
+                      <img
+                        src="/images/Zoro.jpg"
+                        alt="Zoro"
+                        class="w-100 h-100 object-fit-cover"
+                      />
+                    </div>
+
+                    <h5 class="card-title">Roronoa Zoro</h5>
+                    <span class="badge bg-success mb-2">Espadachim</span>
+                    <p class="card-text small">
+                      <strong>Poder:</strong> Três Espadas<br />
+                      <strong>Sonho:</strong> Maior Espadachim do Mundo<br />
+                      <strong>Recompensa:</strong> 1.111.000.000 berries
+                    </p>
+                    <button
+                      class="btn btn-outline-success"
+                      data-bs-toggle="modal"
+                      data-bs-target="#zoroModal"
+                    >
+                      Ver Detalhes
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card h-100 border-0 shadow">
+                  <div class="card-body text-center">
+                    <div
+                      class="op-avatar bg-warning mx-auto mb-3 rounded-circle overflow-hidden"
+                      style="width: 80px; height: 80px"
+                    >
+                      <img
+                        src="/images/nami.avif"
+                        alt="Nami"
+                        class="w-100 h-100 object-fit-cover"
+                      />
+                    </div>
+
+                    <h5 class="card-title">Nami</h5>
+                    <span class="badge bg-warning text-dark mb-2"
+                      >Navegadora</span
+                    >
+                    <p class="card-text small">
+                      <strong>Poder:</strong> Clima-Tact<br />
+                      <strong>Sonho:</strong> Mapear o Mundo Inteiro<br />
+                      <strong>Recompensa:</strong> 366.000.000 berries
+                    </p>
+                    <button
+                      class="btn btn-outline-warning"
+                      data-bs-toggle="modal"
+                      data-bs-target="#namiModal"
+                    >
+                      Ver Detalhes
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="antagonists">
+            <div class="row">
+              <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card h-100 border-danger shadow">
+                  <div class="card-body text-center">
+                    <div class="op-avatar bg-danger mx-auto mb-3">BB</div>
+                    <h5 class="card-title">Marshall D. Teach</h5>
+                    <p class="text-muted">"Barba Negra"</p>
+                    <span class="badge bg-danger mb-2">Yonkou</span>
+                    <p class="card-text small">
+                      <strong>Poder:</strong> Yami Yami no Mi & Gura Gura no Mi
+                    </p>
+                    <button
+                      class="btn btn-danger"
+                      data-bs-toggle="modal"
+                      data-bs-target="#blackbeardModal"
+                    >
+                      Ver Detalhes
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cast Section -->
+    <section id="cast" class="py-5">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span class="badge bg-warning text-dark p-2 mb-3">
+            <i class="bi bi-mic me-1"></i>As Vozes
+          </span>
+          <h2 class="display-4 fw-bold">Elenco de Dublagem</h2>
+        </div>
+
+        <div class="accordion" id="castAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#japaneseVoices"
+              >
+                🇯🇵 Elenco Original Japonês
+              </button>
+            </h2>
+            <div
+              id="japaneseVoices"
+              class="accordion-collapse collapse show"
+              data-bs-parent="#castAccordion"
+            >
+              <div class="accordion-body">
+                <div class="list-group">
+                  <div
+                    class="list-group-item d-flex justify-content-between align-items-center"
+                  >
+                    <div>
+                      <h6 class="mb-1">Monkey D. Luffy</h6>
+                      <p class="mb-1 text-primary">Mayumi Tanaka</p>
+                      <small>Dubladora desde 1999</small>
+                    </div>
+                  </div>
+                  <div
+                    class="list-group-item d-flex justify-content-between align-items-center"
+                  >
+                    <div>
+                      <h6 class="mb-1">Roronoa Zoro</h6>
+                      <p class="mb-1 text-primary">Kazuya Nakai</p>
+                      <small>Voz marcante e grave</small>
+                    </div>
+                  </div>
+                  <div
+                    class="list-group-item d-flex justify-content-between align-items-center"
+                  >
+                    <div>
+                      <h6 class="mb-1">Nami</h6>
+                      <p class="mb-1 text-primary">Akemi Okamura</p>
+                      <small>Voz doce e determinada</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#brazilianVoices"
+              >
+                🇧🇷 Elenco Brasileiro
+              </button>
+            </h2>
+            <div
+              id="brazilianVoices"
+              class="accordion-collapse collapse"
+              data-bs-parent="#castAccordion"
+            >
+              <div class="accordion-body">
+                <div class="list-group">
+                  <div class="list-group-item">
+                    <h6 class="mb-1">Monkey D. Luffy</h6>
+                    <p class="mb-1 text-success">Ursula Bezerra</p>
+                    <small>Voz brasileira icônica</small>
+                  </div>
+                  <div class="list-group-item">
+                    <h6 class="mb-1">Roronoa Zoro</h6>
+                    <p class="mb-1 text-success">Marcelo Campos</p>
+                    <small>Dublador experiente</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Curiosities Section -->
+    <section id="curiosities" class="py-5 bg-light">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span class="badge bg-warning text-dark p-2 mb-3">
+            <i class="bi bi-lightbulb me-1"></i>Descubra Mais
+          </span>
+          <h2 class="display-4 fw-bold">Curiosidades Épicas</h2>
+        </div>
+
+        <div class="accordion" id="curiositiesAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#record1"
+              >
+                🏆 Maior mangá de todos os tempos
+              </button>
+            </h2>
+            <div
+              id="record1"
+              class="accordion-collapse collapse show"
+              data-bs-parent="#curiositiesAccordion"
+            >
+              <div class="accordion-body">
+                One Piece é o mangá mais vendido da história, com mais de 500
+                milhões de cópias vendidas mundialmente.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#record2"
+              >
+                ⏰ Ritmo de trabalho intenso
+              </button>
+            </h2>
+            <div
+              id="record2"
+              class="accordion-collapse collapse"
+              data-bs-parent="#curiositiesAccordion"
+            >
+              <div class="accordion-body">
+                Eiichiro Oda trabalha cerca de 21 horas por dia e dorme apenas 3
+                horas, sendo conhecido por sua dedicação extrema.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#record3"
+              >
+                🌍 Fenômeno global
+              </button>
+            </h2>
+            <div
+              id="record3"
+              class="accordion-collapse collapse"
+              data-bs-parent="#curiositiesAccordion"
+            >
+              <div class="accordion-body">
+                One Piece foi traduzido para mais de 42 idiomas e é publicado em
+                mais de 80 países ao redor do mundo.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Soundtrack Section -->
+    <section id="soundtrack" class="py-5">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span class="badge bg-warning text-dark p-2 mb-3">
+            <i class="bi bi-music-note me-1"></i>As Melodias
+          </span>
+          <h2 class="display-4 fw-bold">Trilha Sonora</h2>
+        </div>
+
+        <div
+          id="soundtrackCarousel"
+          class="carousel slide"
+          data-bs-ride="carousel"
+        >
+          <div class="carousel-indicators">
+            <button
+              type="button"
+              data-bs-target="#soundtrackCarousel"
+              data-bs-slide-to="0"
+              class="active"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#soundtrackCarousel"
+              data-bs-slide-to="1"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#soundtrackCarousel"
+              data-bs-slide-to="2"
+            ></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div
+                class="card border-0 shadow mx-auto"
+                style="max-width: 500px"
+              >
+                <div class="card-body text-center p-5">
+                  <i
+                    class="bi bi-music-note-beamed display-4 text-primary mb-3"
+                  ></i>
+                  <h4>"We Are!"</h4>
+                  <p class="text-muted">Opening 1 - Hiroshi Kitadani</p>
+                  <p>
+                    A música de abertura mais icônica de One Piece, que
+                    acompanha os fãs desde o início da jornada.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div
+                class="card border-0 shadow mx-auto"
+                style="max-width: 500px"
+              >
+                <div class="card-body text-center p-5">
+                  <i
+                    class="bi bi-music-note-beamed display-4 text-warning mb-3"
+                  ></i>
+                  <h4>"Binks' Sake"</h4>
+                  <p class="text-muted">Música dos Piratas</p>
+                  <p>
+                    A canção tradicional dos piratas que conecta o passado e
+                    presente da tripulação.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div
+                class="card border-0 shadow mx-auto"
+                style="max-width: 500px"
+              >
+                <div class="card-body text-center p-5">
+                  <i
+                    class="bi bi-music-note-beamed display-4 text-success mb-3"
+                  ></i>
+                  <h4>"Overtaken"</h4>
+                  <p class="text-muted">OST Épica</p>
+                  <p>
+                    Uma das trilhas instrumentais mais emocionantes usada em
+                    momentos cruciais.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#soundtrackCarousel"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon"></span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#soundtrackCarousel"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon"></span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="op-ocean-gradient text-white py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 mb-4">
+            <div class="d-flex align-items-center mb-3">
+              <i class="bi bi-compass fs-2 me-3"></i>
+              <div>
+                <h4>One Piece World</h4>
+                <p class="mb-0">A maior aventura pirata</p>
+              </div>
+            </div>
+            <p class="text-light">
+              Explore o mundo épico de One Piece! Junte-se a Luffy e sua
+              tripulação na busca pelo maior tesouro do mundo.
+            </p>
+          </div>
+          <div class="col-lg-3 mb-4">
+            <h5>Navegação</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="Home.html" class="text-light text-decoration-none"
+                  >Início</a
+                >
+              </li>
+              <li>
+                <a href="#synopsis" class="text-light text-decoration-none"
+                  >Sinopse</a
+                >
+              </li>
+              <li>
+                <a href="#characters" class="text-light text-decoration-none"
+                  >Personagens</a
+                >
+              </li>
+              <li>
+                <a href="#cast" class="text-light text-decoration-none"
+                  >Elenco</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <hr class="my-4" />
+        <div class="text-center">
+          <p class="mb-0">
+            &copy; 2024 One Piece World. Feito com ❤️ por fãs, para fãs.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Modals -->
+    <!-- Luffy Modal -->
+    <div class="modal fade" id="luffyModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Monkey D. Luffy</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="text-center mb-3">
+              <span class="badge bg-warning text-dark">Capitão</span>
+            </div>
+            <p>
+              O capitão otimista dos Piratas do Chapéu de Palha. Possui poderes
+              de borracha e um apetite insaciável por aventuras e carne.
+            </p>
+            <div class="row">
+              <div class="col-6">
+                <strong>Poder:</strong><br />
+                <span class="text-muted">Gomu Gomu no Mi</span>
+              </div>
+              <div class="col-6">
+                <strong>Sonho:</strong><br />
+                <span class="text-muted">Ser o Rei dos Piratas</span>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Fechar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Zoro Modal -->
+    <div class="modal fade" id="zoroModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Roronoa Zoro</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="text-center mb-3">
+              <span class="badge bg-success">Espadachim</span>
+            </div>
+            <p>
+              O espadachim da tripulação que luta com três espadas. Determinado
+              a se tornar o maior espadachim do mundo.
+            </p>
+            <div class="row">
+              <div class="col-6">
+                <strong>Estilo:</strong><br />
+                <span class="text-muted">Santoryu</span>
+              </div>
+              <div class="col-6">
+                <strong>Sonho:</strong><br />
+                <span class="text-muted">Maior Espadachim</span>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Fechar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Nami Modal -->
+    <div class="modal fade" id="namiModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Nami</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="text-center mb-3">
+              <span class="badge bg-warning text-dark">Navegadora</span>
+            </div>
+            <p>
+              A navegadora expert da tripulação. Sonha em mapear o mundo inteiro
+              e tem uma obsessão por dinheiro.
+            </p>
+            <div class="row">
+              <div class="col-6">
+                <strong>Arma:</strong><br />
+                <span class="text-muted">Clima-Tact</span>
+              </div>
+              <div class="col-6">
+                <strong>Sonho:</strong><br />
+                <span class="text-muted">Mapear o Mundo</span>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Fechar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Blackbeard Modal -->
+    <div class="modal fade" id="blackbeardModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Marshall D. Teach "Barba Negra"</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="text-center mb-3">
+              <span class="badge bg-danger">Yonkou</span>
+            </div>
+            <p>
+              Um dos principais antagonistas da série. Único conhecido por
+              possuir dois poderes de Akuma no Mi.
+            </p>
+            <div class="row">
+              <div class="col-12">
+                <strong>Poderes:</strong><br />
+                <span class="text-muted"
+                  >Yami Yami no Mi & Gura Gura no Mi</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Fechar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
